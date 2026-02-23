@@ -1,0 +1,363 @@
+@charset "utf-8";
+
+:root {
+    --header-h: 86px;
+    --container: 1600px;
+
+    --text: #fff;
+    --muted: rgba(255, 255, 255, .78);
+    --line: rgba(255, 255, 255, .18);
+}
+
+/* reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Pretendard Variable", Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+        "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 1600px 1열 컨테이너 */
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 메인 비주얼 1920x960 (2:1 유지) */
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1920 / 960;
+    max-height: 960px;
+    overflow: hidden;
+    background: #0b1622;
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .1) 100%),
+        url("hero.jpg") center/cover no-repeat;
+}
+
+/* Header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-h);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0));
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.logo {
+    width: 250px;
+    /* ⭐ 로고 고정 폭 (원하는 값으로 조절) */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* 로고는 왼쪽 정렬 */
+    overflow: hidden;
+    /* 로고가 길면 넘치지 않게 */
+}
+
+.gnb {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* ⭐ 가운데 정렬 핵심 */
+    gap: 45px;
+}
+
+.gnb a {
+    font-size: 22px;
+    /* ✅ 요청 */
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.gnb a:hover {
+    color: #fff;
+}
+
+.gnb a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    height: 2px;
+    background: #fff;
+    opacity: 0;
+    transform: scaleX(.7);
+    transition: .18s;
+}
+
+.gnb a:hover::after {
+    opacity: .85;
+    transform: scaleX(1);
+}
+
+.header__right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* 오른쪽 정렬 */
+    align-items: center;
+    gap: 15px;
+}
+
+.iconbtn+.iconbtn {
+    margin-left: -10px;
+    /* 검색과 햄버거 사이만 */
+}
+
+/* UTIL 17px + 아이콘 */
+.util {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 17px;
+    /* ✅ 요청 */
+    color: #fff;
+    white-space: nowrap;
+}
+
+.util__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 2px;
+}
+
+.util__link:hover {
+    color: #fff;
+}
+
+.util__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
+    opacity: .95;
+}
+
+/* 버튼 32x32 */
+.iconbtn {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.iconbtn:hover {
+    opacity: 0.7;
+}
+
+
+/* 검색 아이콘 */
+.searchIcon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, .9);
+    border-radius: 999px;
+}
+
+.searchIcon::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 2px;
+    background: rgba(255, 255, 255, .9);
+    right: -5px;
+    bottom: -2px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+}
+
+/* 햄버거 */
+.burger {
+    position: relative;
+}
+
+.burger span {
+    position: absolute;
+    left: 50%;
+    width: 16px;
+    height: 2px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+.burger span:nth-child(1) {
+    top: 9px;
+}
+
+.burger span:nth-child(2) {
+    top: 15px;
+    opacity: .95;
+}
+
+.burger span:nth-child(3) {
+    top: 21px;
+}
+
+/* Hero content */
+.hero__content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    padding-top: var(--header-h);
+    display: flex;
+    align-items: center;
+}
+
+.hero__text {
+    max-width: 700px;
+}
+
+.hero__eyebrow {
+    font-size: 22px;
+    color: rgba(255, 255, 255, .88);
+    letter-spacing: -0.4px;
+    margin-bottom: 10px;
+}
+
+.hero__title {
+    margin: 0;
+    font-size: clamp(44px, 4.6vw, 70px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* 좌우 화살표(옵션) */
+.navArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, .22);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.navArrow:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+.navArrow--left {
+    left: 18px;
+}
+
+.navArrow--right {
+    right: 18px;
+}
+
+.chev {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid rgba(255, 255, 255, .85);
+    border-bottom: 2px solid rgba(255, 255, 255, .85);
+    transform: rotate(135deg);
+}
+
+.navArrow--right .chev {
+    transform: rotate(-45deg);
+}
+
+/* 반응형: 화면 좁으면 gnb 숨기고 버튼만 */
+@media (max-width: 1100px) {
+    .gnb {
+        display: none;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .logo {
+        width: 180px;
+    }
+}
+
+/* info */
+.info {
+    padding: 150px 100px;
+    background: #fff;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    font-size: 47.5px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    color: #000;
+    font-size: 17px;
+}
+
+.introduction {
+    height: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.introduction .box1 .box {
+    border-radius: 20px;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+
+}
+
+.introduction p {
+    font-size: 32px;
+}
