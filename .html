@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Header + Main Visual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --header-h: 86px;
+            --container: 1200px;
+            --text: #fff;
+            --muted: rgba(255, 255, 255, .75);
+            --line: rgba(255, 255, 255, .18);
+            --bg: #0b1622;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            background: #000;
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* ===== Hero (배경 + 상단 헤더 오버레이) ===== */
+        .hero {
+            position: relative;
+            min-height: 640px;
+            height: 78vh;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        /* 배경 이미지 */
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .1) 100%),
+                url("hero.jpg") center/cover no-repeat;
+            transform: scale(1.02);
+            filter: saturate(1.05) contrast(1.03);
+        }
+
+        /* 상단 헤더(투명) */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-h);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
+            backdrop-filter: blur(2px);
+        }
+
+        .header__inner {
+            width: min(var(--container), calc(100% - 48px));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .logo {
+            width: 220px;
+            height: 44px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, .92);
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            color: #0b1622;
+            font-weight: 800;
+            letter-spacing: -.5px;
+        }
+
+        /* 네가 실제 로고 이미지 쓰면 아래처럼 */
+        /* .logo img{width:100%;height:100%;object-fit:contain} */
+
+        .gnb {
+            display: flex;
+            gap: 26px;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .gnb a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--muted);
+            padding: 8px 0;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .gnb a:hover {
+            color: #fff;
+        }
+
+        .gnb a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            height: 2px;
+            background: #fff;
+            opacity: 0;
+            transform: scaleX(.6);
+            transition: .18s;
+        }
+
+        .gnb a:hover::after {
+            opacity: .8;
+            transform: scaleX(1);
+        }
+
+        .header__right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .util {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .util a:hover {
+            color: #fff;
+        }
+
+        .iconbtn {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(0, 0, 0, .18);
+            cursor: pointer;
+        }
+
+        .iconbtn:hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        /* 햄버거 */
+        .burger {
+            position: relative;
+        }
+
+        .burger span {
+            width: 18px;
+            height: 2px;
+            background: rgba(255, 255, 255, .85);
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .burger span:nth-child(1) {
+            top: 14px;
+        }
+
+        .burger span:nth-child(2) {
+            top: 19px;
+            opacity: .9;
+        }
+
+        .burger span:nth-child(3) {
+            top: 24px;
+        }
+
+        /* 검색 아이콘(간단) */
+        .searchIcon {
+            width: 18px;
+            height: 18px;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, .85);
+            border-radius: 999px;
+        }
+
+        .searchIcon::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background: rgba(255, 255, 255, .85);
+            right: -5px;
+            bottom: -2px;
+            transform: rotate(45deg);
+            border-radius: 2px;
+        }
+
+        /* ===== Hero Content ===== */
+        .hero__content {
+            position: relative;
+            z-index: 5;
+            width: min(var(--container), calc(100% - 48px));
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-h);
+        }
+
+        .hero__text {
+            max-width: 560px;
+            padding: 40px 0;
+        }
+
+        .hero__eyebrow {
+            font-size: 22px;
+            color: rgba(255, 255, 255, .88);
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .hero__title {
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        /* 좌우 화살표 */
+        .navArrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 6;
+            width: 46px;
+            height: 46px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(0, 0, 0, .22);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .navArrow:hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .navArrow--left {
+            left: 18px;
+        }
+
+        .navArrow--right {
+            right: 18px;
+        }
+
+        .chev {
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid rgba(255, 255, 255, .85);
+            border-bottom: 2px solid rgba(255, 255, 255, .85);
+            transform: rotate(135deg);
+        }
+
+        .navArrow--right .chev {
+            transform: rotate(-45deg);
+        }
+
+        /* 반응형: 작은 화면에서 메뉴 숨기고 햄버거로 */
+        @media (max-width: 980px) {
+            .gnb {
+                display: none;
+            }
+
+            .logo {
+                width: 180px;
+            }
+
+            .util {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero" aria-label="Main Visual">
+        <div class="hero__bg" id="heroBg"></div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header__inner">
+                <a class="logo" href="#">
+                    LOGO
+                    <!-- <img src="logo.svg" alt="병원 로고"> -->
+                </a>
+
+                <nav class="gnb" aria-label="Global Navigation">
+                    <a href="#">진료예약/안내</a>
+                    <a href="#">의료진/진료과</a>
+                    <a href="#">고객서비스</a>
+                    <a href="#">건강정보</a>
+                    <a href="#">병원이야기</a>
+                    <a href="#">병원소개</a>
+                </nav>
+
+                <div class="header__right">
+                    <div class="util">
+                        <a href="#">로그인</a>
+                        <a href="#">회원가입</a>
+                    </div>
+
+                    <button class="iconbtn" type="button" aria-label="검색">
+                        <span class="searchIcon" aria-hidden="true"></span>
+                    </button>
+
+                    <button class="iconbtn burger" type="button" aria-label="메뉴">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Arrows -->
+        <button class="navArrow navArrow--left" type="button" aria-label="이전 슬라이드" id="prevBtn">
+            <span class="chev" aria-hidden="true"></span>
+        </button>
+        <button class="navArrow navArrow--right" type="button" aria-label="다음 슬라이드" id="nextBtn">
+            <span class="chev" aria-hidden="true"></span>
+        </button>
+
+        <!-- Content -->
+        <div class="hero__content">
+            <div class="hero__text">
+                <div class="hero__eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
+                <h1 class="hero__title">제주대학교병원</h1>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 아주 단순한 배경 슬라이드 예시(원하면 삭제해도 됨)
+        const slides = [
+            "hero.jpg",
+            "hero2.jpg",
+            "hero3.jpg"
+        ];
+        let idx = 0;
+
+        const heroBg = document.getElementById("heroBg");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        function render() {
+            heroBg.style.backgroundImage =
+                `linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.1) 100%), url("${slides[idx]}")`;
+        }
+
+        prevBtn.addEventListener("click", () => {
+            idx = (idx - 1 + slides.length) % slides.length;
+            render();
+        });
+        nextBtn.addEventListener("click", () => {
+            idx = (idx + 1) % slides.length;
+            render();
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
