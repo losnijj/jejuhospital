@@ -1,91 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="제대병원사이트">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="제대병원 사이트 리뉴얼">
   <meta name="keywords" content="HTML, CSS, JavaScript">
   <meta name="author" content="jinsol">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제대병원사이트1</title>
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-
+  <title>제주대학교병원</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Pretendard Variable -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable.css" />
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/common_media.css">
-  <!-- 내 css -->
-  <!-- 내 media css -->
-
-  <script src="js/common.js"></script>
-  <!-- 내 js -->
+  <link rel="stylesheet" href="css/style2.css" />
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="">
-      <div class="inner">
-        <h1><a href="#">제주대학교병원</a></h1>
-        <nav>
-          <ul class="gnb">
-            <li><a href="#">진료예약/안내</a>
-              <ul class="sub">
-                <!-- <li><a href="#">CEO 인사말</a></li>
-                <li><a href="#">비전 · 미션</a></li>
-                <li><a href="#">CLOUDIVERSE</a></li>
-                <li><a href="#">연혁</a></li>
-                <li><a href="#">R&D</a></li> -->
-              </ul><!-- //.sub -->
-            </li>
-            <li><a href="#">의료진/진료과</a>
-              <ul class="sub">
-                <!-- <li><a href="#">클라우드잇</a></li>
-                <li><a href="#">오픈스택잇</a></li>
-                <li><a href="#">탭클라우드잇</a></li>
-                <li><a href="#">SE클라우드잇</a></li>
-                <li><a href="#">데브옵스잇</a></li>
-                <li><a href="#">옵티머스잇</a></li> -->
-              </ul><!-- //.sub -->
-            </li>
-            <li><a href="#">고객서비스</a>
-              <ul class="sub">
-                <!-- <li><a href="#">공공 · 정부</a></li>
-                <li><a href="#">교육 · 연구</a></li>
-                <li><a href="#">엔터프라이즈</a></li> -->
-              </ul><!-- //.sub -->
-            </li>
-            <li><a href="#">건강정보</a>
-              <ul class="sub">
-                <!-- <li><a href="#">프로그램 소개</a></li>
-                <li><a href="#">파트너 리스트</a></li> -->
-              </ul><!-- //.sub -->
-            </li>
-            <li><a href="#">고객이야기</a>
-              <ul class="sub">
-                <!-- <li><a href="#">뉴스룸</a></li>
-                <li><a href="#">CI / BI</a></li>
-                <li><a href="#">캐릭터</a></li>
-                <li><a href="#">행사</a></li>
-                <li><a href="#">블로그</a></li> -->
-              </ul><!-- //.sub -->
-            </li>
-            <li><a href="#">병원소개</a></li>
-          </ul><!-- //.gnb -->
+  <section class="wrap" aria-label="Main Visual">
+    <div class="wrap__bg" id="wrapBg"></div>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="#" aria-label="홈">LOGO</a>
+        <nav class="gnb" aria-label="Global Navigation">
+          <a href="#">진료예약/안내</a>
+          <a href="#">의료진/진료과</a>
+          <a href="#">고객서비스</a>
+          <a href="#">건강정보</a>
+          <a href="#">병원이야기</a>
+          <a href="#">병원소개</a>
         </nav>
-        <div class="right">
-     <a href="#" class="af">로그인</a>
-     <a href="#" class="af">회원가입</a>
-     <ul id="hamMenu">
-      <li></li>
-      <li></li>
-      <li></li>
-     </ul>
-    </div><!-- //.right -->
-   </div><!-- //.inner -->
+        <div class="header__right">
+          <div class="util">
+            <a class="util__link" href="#">
+              <span class="material-symbols-outlined util__icon">
+                login
+              </span>
+              로그인
+            </a>
+            <a class="util__link" href="#">
+              <span class="material-symbols-outlined">
+                person_add
+              </span>
+              </span>
+              회원가입
+            </a>
+          </div>
+          <button class="iconbtn iconbtn--32" type="button" aria-label="검색">
+            <span class="searchIcon" aria-hidden="true"></span>
+          </button>
+          <button class="iconbtn iconbtn--32 burger" type="button" aria-label="메뉴">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
     </header>
-    <main></main>
-    <footer></footer>
-  </div><!-- //.wrap -->
-
+    <button class="navArrow navArrow--left" type="button" aria-label="이전" id="prevBtn">
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <button class="navArrow navArrow--right" type="button" aria-label="다음" id="nextBtn">
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="container wrap__content">
+      <div class="wrap__text">
+        <div class="wrap__eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
+        <h1 class="wrap__title">제주대학교병원</h1>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+  <main>
+    <section class="info">
+      <h2>
+        제주대학교병원은 진료의 전문성을 높이기 위해<br>
+        다양한 진료센터를 운영합니다.
+      </h2>
+      <p>
+        언제나 늘 가까이, 건강한 삶과 웃음을 되찾아주는 든든한 벗이 되겠습니다.
+      </p>
+      <div class="introduction">
+        <div class="box1 box">
+          <em>SPINE CENTER</em>
+          <p>응급의료센터</p>
+        </div>
+        <div class="box2 box">
+          <em>SPINE CENTER</em>
+          <p>종합검진센터</p>
+        </div>
+        <div class="box3 box">
+          <em>SPINE CENTER</em>
+          <p>제주지역암센터</p>
+        </div>
+        <div class="box4 box">
+          <em>SPINE CENTER</em>
+          <p>장애인구강진료센터</p>
+        </div>
+        <div class="box5 box">
+          <em>SPINE CENTER</em>
+          <p>권역심뇌혈관질환센터</p>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>

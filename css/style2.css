@@ -3,7 +3,6 @@
 :root {
     --header-h: 86px;
     --container: 1600px;
-
     --text: #fff;
     --muted: rgba(255, 255, 255, .78);
     --line: rgba(255, 255, 255, .18);
@@ -29,7 +28,6 @@ a {
     text-decoration: none;
 }
 
-/* 1600px 1열 컨테이너 */
 .container {
     width: 100%;
     max-width: var(--container);
@@ -37,8 +35,7 @@ a {
     padding: 0 40px;
 }
 
-/* 메인 비주얼 1920x960 (2:1 유지) */
-.hero {
+.wrap {
     position: relative;
     width: 100%;
     aspect-ratio: 1920 / 960;
@@ -47,12 +44,12 @@ a {
     background: #0b1622;
 }
 
-.hero__bg {
+.wrap__bg {
     position: absolute;
     inset: 0;
     background:
         linear-gradient(90deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .1) 100%),
-        url("hero.jpg") center/cover no-repeat;
+        url(../img/wrap.jpg) center/cover no-repeat;
 }
 
 /* Header */
@@ -237,8 +234,8 @@ a {
     top: 21px;
 }
 
-/* Hero content */
-.hero__content {
+/* wrap content */
+.wrap__content {
     position: relative;
     z-index: 5;
     height: 100%;
@@ -247,18 +244,18 @@ a {
     align-items: center;
 }
 
-.hero__text {
+.wrap__text {
     max-width: 700px;
 }
 
-.hero__eyebrow {
+.wrap__eyebrow {
     font-size: 22px;
     color: rgba(255, 255, 255, .88);
     letter-spacing: -0.4px;
     margin-bottom: 10px;
 }
 
-.hero__title {
+.wrap__title {
     margin: 0;
     font-size: clamp(44px, 4.6vw, 70px);
     line-height: 1.05;
@@ -323,41 +320,108 @@ a {
 }
 
 /* info */
+/* 섹션 */
 .info {
-    padding: 150px 100px;
     background: #fff;
-}
-
-h2 {
-    display: flex;
-    justify-content: center;
+    padding: 300px 0 100px;
     text-align: center;
-    color: #000;
+}
+
+/* info */
+.info h2 {
     font-size: 47.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.6px;
+    margin: 0 0 16px;
+    color: #111;
 }
 
-p {
-    display: flex;
-    justify-content: center;
-    color: #000;
+.info>p {
     font-size: 17px;
+    color: #666;
+    margin-bottom: 50px;
 }
 
+/* 카드 전체 */
 .introduction {
-    height: 900px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
 }
 
-.introduction .box1 .box {
-    border-radius: 20px;
-    height: 100%;
-    padding: 40px;
+/* 카드 공통 */
+.box {
     position: relative;
-
+    height: 450px;
+    width: 338px;
+    border-radius: 19px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    color: #fff;
+    text-align: left;
+    background-size: cover;
+    background-position: center;
 }
 
-.introduction p {
-    font-size: 32px;
+/* 어두운 오버레이 */
+.box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .6) 100%);
+}
+
+.box em,
+.box p {
+    position: relative;
+    z-index: 1;
+}
+
+/* 작은 영문 */
+.box em {
+    font-size: 11px;
+    letter-spacing: .15em;
+    font-style: normal;
+    opacity: .85;
+    margin-bottom: 6px;
+}
+
+/* 한글 제목 */
+.box p {
+    margin: 0;
+    font-size: 29px;
+    font-weight: 600;
+}
+
+/* 각 카드 배경이미지 */
+.box1 {
+    background-image: url(../img/center1.jpg);
+}
+
+.box2 {
+    background-image: url(../img/center2.png);
+}
+
+.box3 {
+    background-image: url(../img/center3.png);
+}
+
+.box4 {
+    background-image: url(../img/center4.png);
+}
+
+.box5 {
+    background-image: url(../img/center5.png);
+}
+
+/* 호버 */
+.box:hover {
+    transform: translateY(-4px);
+    transition: .3s;
 }

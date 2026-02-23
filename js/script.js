@@ -1,4 +1,3 @@
-// 배경 슬라이드(원하면 삭제 가능)
 const slides = ["hero.jpg", "hero2.jpg", "hero3.jpg"];
 let idx = 0;
 
