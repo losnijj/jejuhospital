@@ -393,7 +393,6 @@ a {
     background-image: url(../img/center5.png);
 }
 
-/* 호버 */
 .box:hover {
     transform: translateY(-4px);
     transition: .3s;
@@ -401,7 +400,7 @@ a {
 
 
 
-/* ===== 서브 배너 전체 ===== */
+/* sub_banner */
 .sub_banner{
 margin-top: 300px;
   position: relative;
@@ -428,7 +427,7 @@ align-items: center;}
   letter-spacing: -0.5px;
 }
 
-/* ===== 검색바 ===== */
+/* 검색바 */
 .search_wrap{
   width: 720px;
   margin: 0 auto 30px;
