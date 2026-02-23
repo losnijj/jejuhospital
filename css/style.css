@@ -227,8 +227,8 @@ a {
     top: 21px;
 }
 
-/* wrap content */
-.wrap__content {
+/* content */
+.content {
     position: relative;
     z-index: 5;
     height: 100%;
@@ -237,23 +237,163 @@ a {
     align-items: center;
 }
 
-.wrap__text {
+.text {
     max-width: 700px;
 }
 
-.wrap__eyebrow {
+.eyebrow {
     font-size: 22px;
     color: rgba(255, 255, 255, .88);
     letter-spacing: -0.4px;
     margin-bottom: 10px;
 }
 
-.wrap__title {
+.title {
     margin: 0;
     font-size: clamp(44px, 4.6vw, 70px);
     line-height: 1.05;
     font-weight: 800;
     letter-spacing: -1px;
+}
+
+/* ===== Quick Menu (메인비주얼 아래 겹치는 영역) ===== */
+.quick_menu{
+  position: relative;
+  z-index: 20;
+  margin-top: -70px;   /* ⭐ wrap 위로 겹치기 (값 조절: -60 ~ -100) */
+}
+
+.quick_inner{
+  border-radius: 18px;
+  overflow: hidden; /* ⭐ 3칸이 하나의 카드처럼 보이게 */
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: 160px;
+}
+
+/* 각 박스 공통 */
+.quick_box{
+  padding: 26px 28px;
+}
+
+.quick_box h3{
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.quick_box p{
+  margin: 0 0 14px;
+  font-size: 13px;
+  opacity: .9;
+}
+
+/* 좌/우: 딥블루 */
+.quick_left,
+.quick_right{
+  background: #173b67;
+  color: #fff;
+}
+
+/* 가운데: 화이트 */
+.quick_center{
+  background: #fff;
+  color: #111;
+}
+
+/* 검색 입력 + 버튼 */
+.quick_search{
+  position: relative;
+  height: 44px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.quick_left .quick_search,
+.quick_right .quick_search{
+  background: rgba(255,255,255,.12);
+}
+
+.quick_center .quick_search{
+  background: #f3f5f8;
+}
+
+.quick_search input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 54px 0 14px;
+  color: inherit;
+  font-size: 14px;
+}
+
+.quick_search input::placeholder{
+  color: rgba(255,255,255,.8);
+}
+
+.quick_center .quick_search input::placeholder{
+  color: #8a8f98;
+}
+
+.quick_btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(0,0,0,.18);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.quick_center .quick_btn{
+  background: #1d5fd0;
+  color: #fff;
+}
+
+/* 가운데 아이콘 3개 */
+.quick_icons{
+  display: flex;
+  gap: 14px;
+}
+
+.qicon{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f3f5f8;
+  color: #111;
+  flex: 1;
+}
+
+.qicon span{
+  font-size: 22px;
+  color: #1d5fd0;
+}
+
+.qicon em{
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 반응형 */
+@media (max-width: 1100px){
+  .quick_inner{
+    grid-template-columns: 1fr;
+  }
+  .quick_menu{
+    margin-top: -40px;
+  }
 }
 
 /* 좌우 화살표(옵션) */
