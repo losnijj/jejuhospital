@@ -14,3 +14,14 @@
         width: 180px;
     }
 }
+
+/* quick_menu */
+@media (max-width: 1100px) {
+    .quick_inner {
+        grid-template-columns: 1fr;
+    }
+
+    .quick_menu {
+        margin-top: -40px;
+    }
+}
