@@ -8,121 +8,147 @@
   <meta name="author" content="jinsol">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>제주대학교병원</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Pretendard Variable -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable.css" />
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/common_media.css">
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/main_style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="js/main_script.js" defer></script>
 </head>
 
 <body>
-  <section class="wrap">
-    <div class="wrap__bg" id="wrapBg"></div>
-    <header class="header">
-      <div class="container header__inner">
-        <a class="logo" href="#" aria-label="홈">LOGO</a>
-        <nav class="gnb" aria-label="Global Navigation">
-          <a href="#">진료예약/안내</a>
-          <a href="#">의료진/진료과</a>
-          <a href="#">고객서비스</a>
-          <a href="#">건강정보</a>
-          <a href="#">병원이야기</a>
-          <a href="#">병원소개</a>
-        </nav>
-        <div class="header__right">
-          <div class="util">
-            <a class="util__link" href="#">
-              <span class="material-symbols-outlined util__icon">
-                login
-              </span>
-              로그인
-            </a>
-            <a class="util__link" href="#">
-              <span class="material-symbols-outlined">
-                person_add
-              </span>
-              회원가입
-            </a>
-          </div>
-          <button class="iconbtn iconbtn--32" type="button" aria-label="검색">
-            <span class="searchIcon" aria-hidden="true"></span>
-          </button>
-          <button class="iconbtn iconbtn--32 burger" type="button" aria-label="메뉴">
-            <span></span><span></span><span></span>
-          </button>
+  <header class="header">
+    <div class="container header__inner">
+      <h1> <a class="logo" href="#" aria-label="홈">LOGO</a></h1>
+      <nav class="gnb" aria-label="Global Navigation">
+        <a href="#">진료예약/안내</a>
+        <a href="#">의료진/진료과</a>
+        <a href="#">고객서비스</a>
+        <a href="#">건강정보</a>
+        <a href="#">병원이야기</a>
+        <a href="#">병원소개</a>
+      </nav>
+      <div class="header__right">
+        <div class="util">
+          <a class="util__link" href="#">
+            <span class="material-symbols-outlined util__icon">
+              login
+            </span>
+            로그인
+          </a>
+          <a class="util__link" href="#">
+            <span class="material-symbols-outlined">
+              person_add
+            </span>
+            회원가입
+          </a>
         </div>
+        <button class="iconbtn iconbtn--32" type="button" aria-label="검색">
+          <span class="searchIcon" aria-hidden="true"></span>
+        </button>
+        <button class="iconbtn iconbtn--32 burger" type="button" aria-label="메뉴">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </header>
+    </div>
+  </header>
+  <section class="main_visual">
+    <div class="wrap__bg swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide1">
+          <div class="container content">
+            <div class="text">
+              <div class="eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
+              <h2 class="title">제주대학교병원</h2>
+            </div>
+          </div>
+        </div><!-- //.swiper-slide -->
+        <div class="swiper-slide slide2">
+          <div class="container content">
+            <div class="text">
+              <div class="eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
+              <h2 class="title">제주대학교병원</h2>
+            </div>
+          </div>
+        </div><!-- //.swiper-slide -->
+        <div class="swiper-slide slide3">
+          <div class="container content">
+            <div class="text">
+              <div class="eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
+              <h2 class="title">제주대학교병원</h2>
+            </div>
+          </div>
+        </div><!-- //.swiper-slide -->
+      </div>
+
+    </div>
     <button class="navArrow navArrow--left" type="button" aria-label="이전" id="prevBtn">
       <span class="chev" aria-hidden="true"></span>
     </button>
     <button class="navArrow navArrow--right" type="button" aria-label="다음" id="nextBtn">
       <span class="chev" aria-hidden="true"></span>
     </button>
-    <div class="container content">
-      <div class="text">
-        <div class="eyebrow">생명을 소중히, 환자를 먼저 생각하는</div>
-        <h1 class="title">제주대학교병원</h1>
-      </div>
-    </div>
   </section>
   <!--메인비주얼 아래 겹쳐 올라오는 퀵메뉴 -->
-<section class="quick_menu">
-  <div class="container quick_inner">
+  <section class="quick_menu">
+    <div class="container quick_inner">
 
-    <!-- 왼쪽 -->
-    <div class="quick_box quick_left">
-      <h3>상담이 필요한 고객 예약상담</h3>
-      <p>입력하신 번호로 전문상담 간호사가 연락드립니다.</p>
+      <!-- 왼쪽 -->
+      <div class="quick_box quick_left">
+        <h3>상담이 필요한 고객 예약상담</h3>
+        <p>입력하신 번호로 전문상담 간호사가 연락드립니다.</p>
 
-      <div class="quick_search">
-        <input type="text" placeholder="질병명, 증상 등을 입력하세요.">
-        <button type="button" class="quick_btn">
-          <span class="material-symbols-outlined">search</span>
-        </button>
+        <div class="quick_search">
+          <input type="text" placeholder="질병명, 증상 등을 입력하세요.">
+          <button type="button" class="quick_btn">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- 가운데 -->
-    <div class="quick_box quick_center">
-      <h3>인터넷 진료예약</h3>
-      <p>원하는 서비스로 바로 이동</p>
+      <!-- 가운데 -->
+      <div class="quick_box quick_center">
+        <h3>인터넷 진료예약</h3>
+        <p>원하는 서비스로 바로 이동</p>
 
-      <div class="quick_icons">
-        <a href="#" class="qicon">
-          <span class="material-symbols-outlined">event_available</span>
-          <em>진료예약</em>
-        </a>
-        <a href="#" class="qicon">
-          <span class="material-symbols-outlined">fact_check</span>
-          <em>예약확인</em>
-        </a>
-        <a href="#" class="qicon">
-          <span class="material-symbols-outlined">event_busy</span>
-          <em>예약취소</em>
-        </a>
+        <div class="quick_icons">
+          <a href="#" class="qicon">
+            <span class="material-symbols-outlined">event_available</span>
+            <em>진료예약</em>
+          </a>
+          <a href="#" class="qicon">
+            <span class="material-symbols-outlined">fact_check</span>
+            <em>예약확인</em>
+          </a>
+          <a href="#" class="qicon">
+            <span class="material-symbols-outlined">event_busy</span>
+            <em>예약취소</em>
+          </a>
+        </div>
       </div>
-    </div>
 
-    <!-- 오른쪽 -->
-    <div class="quick_box quick_right">
-      <h3>진료과/의료진 찾기</h3>
-      <p>진료과 또는 의료진을 검색해보세요</p>
+      <!-- 오른쪽 -->
+      <div class="quick_box quick_right">
+        <h3>진료과/의료진 찾기</h3>
+        <p>진료과 또는 의료진을 검색해보세요</p>
 
-      <div class="quick_search">
-        <input type="text" placeholder="진료과/의료진 검색">
-        <button type="button" class="quick_btn">
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
+        <div class="quick_search">
+          <input type="text" placeholder="진료과/의료진 검색">
+          <button type="button" class="quick_btn">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
       </div>
-    </div>
 
-  </div>
-</section>
-  <script src="script.js"></script>
+    </div>
+  </section>
+
   <main>
     <section class="info">
       <h2>
@@ -154,26 +180,26 @@
           <p>권역심뇌혈관질환센터</p>
         </div>
       </div>
-    <section class="sub_banner">
-  <div class="inner">
-    <h2>이런 증상, 어디로 가야할까?</h2>
-    <div class="search_wrap">
-      <input type="text" placeholder="질병명, 증상 등을 입력하세요.">
-      <button type="button" class="search_btn">
-        <span class="material-symbols-outlined">search</span>
-      </button>
-    </div>
-    <div class="keyword_list">
-      <button>#허리디스크</button>
-      <button>#척추질환</button>
-      <button>#뇌혈관질환</button>
-      <button>#관절치료</button>
-    </div>
-  </div>
-</section>
-<section class="">
+      <section class="sub_banner">
+        <div class="inner">
+          <h2>이런 증상, 어디로 가야할까?</h2>
+          <div class="search_wrap">
+            <input type="text" placeholder="질병명, 증상 등을 입력하세요.">
+            <button type="button" class="search_btn">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+          </div>
+          <div class="keyword_list">
+            <button>#허리디스크</button>
+            <button>#척추질환</button>
+            <button>#뇌혈관질환</button>
+            <button>#관절치료</button>
+          </div>
+        </div>
+      </section>
+      <section class="">
 
-</section>
+      </section>
   </main>
 </body>
 

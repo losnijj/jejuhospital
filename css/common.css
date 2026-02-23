@@ -1,0 +1,213 @@
+@charset "utf-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+:root {
+  --header-h: 86px;
+  --container: 1600px;
+  --text: #fff;
+  --muted: rgba(255, 255, 255, .78);
+  --line: rgba(255, 255, 255, .18);
+}
+
+/* reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+    "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0));
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo {
+  width: 250px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+
+}
+
+.gnb {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+.gnb a {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.gnb a:hover {
+  color: #fff;
+}
+
+.gnb a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  background: #fff;
+  opacity: 0;
+  transform: scaleX(.7);
+  transition: .18s;
+}
+
+.gnb a:hover::after {
+  opacity: .85;
+  transform: scaleX(1);
+}
+
+.header__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.iconbtn+.iconbtn {
+  margin-left: -10px;
+  /* 검색과 햄버거 사이만 */
+}
+
+/* UTIL 17px + 아이콘 */
+.util {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 17px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.util__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 2px;
+}
+
+.util__link:hover {
+  color: #fff;
+}
+
+.util__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  opacity: .95;
+}
+
+.iconbtn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconbtn:hover {
+  opacity: 0.7;
+}
+
+
+/* 검색 아이콘 */
+.searchIcon {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, .9);
+  border-radius: 999px;
+}
+
+.searchIcon::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 2px;
+  background: rgba(255, 255, 255, .9);
+  right: -5px;
+  bottom: -2px;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+/* 햄버거 */
+.burger {
+  position: relative;
+}
+
+.burger span {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: rgba(255, 255, 255, .9);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.burger span:nth-child(1) {
+  top: 9px;
+}
+
+.burger span:nth-child(2) {
+  top: 15px;
+  opacity: .95;
+}
+
+.burger span:nth-child(3) {
+  top: 21px;
+}
