@@ -24,13 +24,13 @@
 }
 
 .slide2 {
-    background-image: url(../img/main_visual2.png)  ;
+    background-image: url(../img/main_visual2.png);
     
     /* 이미지넣기 */
 }
 
 .slide3 {
-     background-image: url(../img/main_visual4.png)  ;
+     background-image: url(../img/main_visual4.png);
 }
 
 /* content */
@@ -264,16 +264,37 @@
 .card {
     margin-top: 100px;
     padding: 0 40px;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(5, 1fr);
     gap: 30px;
+ 
 }
+/* 카드 기본 */
+.card .box{
+  flex: 1;
+  transition: flex .35s ease, filter .35s ease, transform .35s ease;
+  filter: brightness(1);
+}
+
+/* 전체에 마우스 올라가면 일단 다 어둡게 */
+.card:hover .box{
+  filter: brightness(.7);
+  transform: scale(.98);
+}
+
+/* 호버한 카드만 밝고 크게 */
+.card .box:hover{
+  flex: 1.2;                  /* ⭐ 커지는 정도 */
+  filter: brightness(1.05);
+  transform: translateY(-8px) scale(1);
+}
+
 
 /* 카드 공통 */
 .box {
     position: relative;
     height: 450px;
-    width: 338px;
+    width: 100%;
     border-radius: 19px;
     overflow: hidden;
     display: flex;
@@ -285,14 +306,49 @@
     background-size: cover;
     background-position: center;
     cursor: pointer;
+    overflow: hidden;
+}
+.card_inner{
+  position: relative;
+  z-index: 2;
+  transition: transform .35s ease;
 }
 
-/* 어두운 오버레이 */
-.box::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .6) 100%);
+/* 기본 버튼 숨김 */
+.more_btn{
+  position: absolute;
+  left: 40px;            /* 너 box padding이 40px이라 맞춤 */
+  bottom: 40px;          /* 아래 여백 */
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #fff;
+  color: #111;
+  font-size: 15px;
+  border-radius: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .35s ease;
+}
+/* 카드 전체 어두운 오버레이 유지 */
+.box::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.7) 100%);
+  transition: .35s ease;
+}
+
+/* ===== 호버 효과 ===== */
+.box:hover .card_inner{
+  transform: translateY(-20px);  /* 텍스트 위로 */
+}
+
+
+.box:hover::before{
+  background: linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.85) 100%);
 }
 
 .box em,
@@ -334,6 +390,7 @@
 .box5 {
     background-image: url(../img/center5.png);
 }
+
 
 .box:hover {
     transform: translateY(-4px);
@@ -438,4 +495,602 @@
 .keyword_list button:hover {
     background: #fff;
     color: #000;
+}
+
+/* ======================
+   Channel Section
+====================== */
+
+.channel{
+    margin-top: 200px;
+  background: #fff;
+  padding: 120px 0 140px;
+  text-align: center;
+}
+
+/* 공통 inner */
+.channel .inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* 타이틀 */
+.channel .title h2{
+  font-size: 55px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1f2c;
+}
+
+.channel .title .sub{
+  display: block;
+  font-size: 16px;
+  color: #9aa0a6;
+  margin-bottom: 25px;
+  font-weight: 400;
+}
+
+.channel .title p{
+margin-top: 50px;
+  font-size: 25px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  font-weight: 500;
+}
+
+/* 이미지 */
+.channel .banner{
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.channel .banner img{
+  width: 100%;
+  display: block;
+}
+
+/* 버튼 */
+.channel .btn_wrap{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.channel .btn_wrap button{
+  width: 220px;
+  height: 65px;
+  border-radius: 50px;
+  border: 1.5px solid #111;
+  background: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.channel .btn_wrap button:hover{
+  background: #111;
+  color: #fff;
+}
+
+/* ======================
+   NEWS Section
+====================== */
+
+.news{
+    margin-top: 200px;
+  background: #e9eff6; 
+  padding: 140px 0 160px;
+}
+
+.news .inner{
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 40px;  
+}
+.section_title{
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section_title h2{
+  font-size: 55px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1f2c;
+}
+
+.section_title span{
+  display: block;
+  font-size: 16px;
+  color: #9aa0a6;
+  font-weight: 400;
+}
+
+/* 좌우 박스 */
+.news_wrap{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* 공통 박스 */
+.news_box{
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  text-align: left;
+}
+
+/* 제목 */
+.news_box h3{
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 14px;
+  color: #1a1f2c;
+}
+
+.news_box h3::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 4px;
+  height: 20px;
+  background: #1d5fd0;
+  border-radius: 3px;
+}
+
+/* 공지사항 리스트 */
+.notice ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice li{
+  border-bottom: 2px solid #eee;
+  margin-bottom: 10px;
+}
+
+.notice li:first-child{
+  border-top: none;
+}
+
+.notice a{
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.notice a em{
+  font-style: normal;
+  color: #9aa0a6;
+  font-size: 14px;
+}
+
+/* 언론보도 */
+.press_item{
+  display: flex;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.press_item img{
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.press_item strong{
+    margin-top: 10px;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #222;
+  text-align: left;
+}
+
+.press_item p{
+margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* ======================
+   고객 서비스 Section
+====================== */
+
+.service{
+  background: #fff;
+  margin-top: 200px;
+  padding: 140px 0 160px;
+}
+
+.service .inner{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 130px;
+}
+
+/* 타이틀 */
+.service .section_title{
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.service .section_title h2{
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1f2c;
+}
+
+.service .section_title span{
+  font-size: 15px;
+  color: #9aa0a6;
+}
+
+/* 리스트 */
+.service_list{
+  border-top: 1px solid #ddd;
+}
+.service_list:last-child{
+    border-top: none;
+}
+
+.service_item{
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  padding: 30px 0;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+/* 왼쪽 제목 */
+.service_item .left{
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  text-align: left;
+  text-decoration: underline;
+}
+
+/* 오른쪽 설명 */
+.service_item .right{
+  font-size: 17px;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* ======================
+   FOOTER
+====================== */
+
+/* TOP */
+footer .top{
+    margin-top: 200px;
+  background: #7ea5c3;
+  padding: 100px 0;
+  text-align: center;
+  color: #fff;
+}
+
+footer .inner{
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+footer .top h2{
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+footer .top p{
+  font-size: 15px;
+  margin-bottom: 30px;
+  opacity: .85;
+}
+
+.call_btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 35px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.4);
+  font-size: 15px;
+  color: #fff;
+}
+
+/* ===== footer bottom 정렬 구조 ===== */
+
+footer .bottom{
+  background: #1b2b42;
+  color: #cfd7e3;
+  padding: 100px 0 50px;
+}
+
+footer .inner{
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ⭐ 좌우 분리 핵심 */
+footer .footer_row{
+  display: flex;
+  justify-content: space-between; /* 양 끝 정렬 */
+  align-items: flex-start;
+  padding-bottom: 60px;
+}
+
+/* 왼쪽 영역 */
+footer .left{
+  max-width: 420px;
+}
+
+footer .left h3{
+  font-size: 25px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+
+footer .left p{
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ⭐ 오른쪽 컬럼 묶음 */
+footer .right_cols{
+  display: flex;
+  gap: 130px;   /* 두 컬럼 사이 간격 (원하면 80~120 조절) */
+}
+
+/* 컬럼 */
+footer .col h4{
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+footer .col ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .col li{
+  margin-bottom: 10px;
+}
+
+footer .col a{
+  font-size: 14px;
+  color: #cfd7e3;
+}
+
+.sns{
+  display: flex;
+  gap: 16px;
+}
+
+.sns a{
+  width: 48px;          /* 기존 32 → 48 */
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;      /* ⭐ 아이콘 크기 */
+  transition: .3s;
+}
+
+/* Hover 효과 */
+.sns a:hover{
+  background: #1d5fd0;  /* 포인트 컬러 */
+  border-color: #1d5fd0;
+  transform: translateY(-4px);
+}
+
+/* 아이콘 자체 부드럽게 */
+.sns a i{
+  transition: .3s;
+}
+
+.sns a:hover i{
+  transform: scale(1.15);
+}
+/* 하단 바 */
+footer .bar{
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+/* ===== (중요) 헤더가 오버레이 위에 있어야 햄버거/X 클릭 가능 ===== */
+.header{
+  position: fixed;
+  z-index: 10001; /* 오버레이보다 무조건 높게 */
+}
+
+/* ===== 햄버거 버튼(기본) ===== */
+.burger{
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger span{
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,.9); /* 기본: 흰색(메인비주얼 위) */
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: transform .25s ease, top .25s ease, opacity .2s ease, background .2s ease;
+}
+
+.burger span:nth-child(1){ top: 9px; }
+.burger span:nth-child(2){ top: 15px; }
+.burger span:nth-child(3){ top: 21px; }
+
+/* ===== 메뉴 열리면: 햄버거 → X ===== */
+body.menu_open .burger span{
+  background: #1a1f2c; /* 오버레이가 밝아서 X는 진한색으로 */
+}
+
+body.menu_open .burger span:nth-child(1){
+  top: 15px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+body.menu_open .burger span:nth-child(2){
+  opacity: 0;
+}
+
+body.menu_open .burger span:nth-child(3){
+  top: 15px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* ===== 오버레이 ===== */
+.mega_overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 10000;          /* 헤더보다 낮게! */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+body.menu_open .mega_overlay{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 배경(이미지 + 반투명) */
+.mega_panel{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.86), rgba(255,255,255,.86)),
+    url("../img/menu_bg.png") center/cover no-repeat;
+  backdrop-filter: blur(2px);
+  overflow: auto;
+}
+
+/* 메뉴 그리드 */
+.mega_grid{
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 140px 60px 80px; /* 위에 헤더 영역 고려해서 넉넉히 */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 70px 90px;
+}
+
+/* 컬럼 */
+.mega_col{
+  position: relative;
+  padding-left: 22px;
+}
+
+.mega_col::before{
+  content:"";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(0,0,0,.12);
+}
+
+.mega_col h3{
+  margin: 0 0 18px;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #1a1f2c;
+}
+
+.mega_col ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.mega_col li{
+  margin-top: 20px;
+  position: relative;
+  padding-left: 14px;
+  color: #444;
+}
+
+.mega_col a{
+  font-size: 18px;
+  color: #444;
+}
+
+.mega_col a:hover{
+  color: #1d5fd0;
+}
+
+/* 메뉴 열릴 때 스크롤 잠금 */
+body.menu_open{
+  overflow: hidden;
+}
+
+/* 햄버거 메뉴 열리면 헤더 메뉴/유틸 숨기기 */
+body.menu_open .gnb,
+body.menu_open .header__right .util,
+body.menu_open .header__right .iconbtn:not(.burger) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 반응형 */
+@media (max-width: 1200px){
+  .mega_grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 60px;
+  }
+}
+
+@media (max-width: 640px){
+  .mega_grid{
+    padding: 110px 20px 60px;
+    grid-template-columns: 1fr;
+  }
 }

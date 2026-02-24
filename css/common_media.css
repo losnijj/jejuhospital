@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* 반응형: 화면 좁으면 gnb 숨기고 버튼만 */
+/* 화면 좁으면 gnb 숨기고 버튼만 */
 @media (max-width: 1100px) {
     .gnb {
         display: none;
@@ -24,4 +24,38 @@
     .quick_menu {
         margin-top: -40px;
     }
+}
+
+
+/* footer */
+@media (max-width: 900px){
+  footer .footer_row{
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  footer .right_cols{
+    gap: 60px;
+  }
+
+  footer .bar{
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* 햄버거메뉴 눌렀을때 */
+@media (max-width: 1200px){
+  .mega_grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 60px;
+  }
+}
+
+@media (max-width: 640px){
+  .mega_topbar{ padding: 0 20px; }
+  .mega_grid{
+    padding: 20px 20px 50px;
+    grid-template-columns: 1fr;
+  }
 }

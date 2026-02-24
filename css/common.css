@@ -9,6 +9,8 @@
   --line: rgba(255, 255, 255, .18);
 }
 
+
+
 /* reset */
 * {
   box-sizing: border-box;
@@ -39,18 +41,20 @@ a {
 
 /* Header */
 .header {
+ 
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: var(--header-h);
-  z-index: 10;
+  z-index: 11;
   display: flex;
   align-items: center;
   background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0));
 }
 
 .header__inner {
+   margin-top: 5px;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -70,12 +74,12 @@ a {
   flex: 1;
   display: flex;
   justify-content: center;
-  gap: 45px;
+  gap: 60px;
 }
 
 .gnb a {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   color: #fff;
   padding: 10px 0;
   position: relative;
@@ -103,6 +107,8 @@ a {
   opacity: .85;
   transform: scaleX(1);
 }
+
+
 
 .header__right {
   flex: 1;
@@ -184,6 +190,139 @@ a {
   border-radius: 2px;
 }
 
+/* ===== GNB 통일 드롭메뉴 ===== */
+/* ===== GNB 통일 드롭메뉴 (애니메이션 버전) ===== */
+.all_menu{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-h);
+  z-index: 10;
+
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0,0,0,.14);
+  box-shadow: 0 20px 40px rgba(0,0,0,.10);
+
+  /* ✅ 닫힘 */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+/* ✅ 열림 */
+body.all_open .all_menu{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.all_inner{
+  padding: 36px 0 52px;
+}
+/* 6열 레이아웃 + 세로 구분선 */
+/* ✅ all_grid를 6열로 고정 */
+.all_grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+/* ✅ 각 컬럼을 해당 열에 고정 배치 */
+.all_col:nth-child(1){ grid-column: 1; }
+.all_col:nth-child(2){ grid-column: 2; }
+.all_col:nth-child(3){ grid-column: 3; }
+.all_col:nth-child(4){ grid-column: 4; }
+.all_col:nth-child(5){ grid-column: 5; }
+.all_col:nth-child(6){ grid-column: 6; }
+
+.all_col{
+  padding: 0 28px;
+  border-left: 1px solid rgba(0,0,0,.14);
+}
+.all_col:first-child{ border-left: none; }
+
+.all_col h3{
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: -0.2px;
+}
+
+.all_col ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.all_col a{
+  font-size: 18px;
+  color: #444;
+}
+.all_col a:hover{
+  color: #1d5fd0;
+}
+
+/* 반응형 */
+@media (max-width: 1400px){
+  body.all_open .all_menu{ max-height: 900px; }
+  .all_grid{ grid-template-columns: repeat(3, 1fr); }
+
+  .all_col{
+    border-left: none;
+    border-top: 1px solid rgba(0,0,0,.14);
+    padding: 26px 28px;
+  }
+  .all_col:nth-child(-n+3){ border-top: none; }
+}
+
+@media (max-width: 720px){
+  body.all_open .all_menu{ max-height: 1400px; }
+  .all_grid{ grid-template-columns: 1fr; }
+
+  .all_col{
+    border-top: 1px solid rgba(0,0,0,.14);
+  }
+  .all_col:first-child{ border-top: none; }
+}
+
+/* ===== 드롭메뉴 열릴 때 헤더 화이트 테마 ===== */
+body.all_open .header{
+  background: #fff; /* 흰색 */
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+/* GNB 글씨 검정 */
+body.all_open .gnb a{
+  color: #111;
+}
+body.all_open .gnb a::after{
+  background: #111;
+}
+
+/* 로그인/회원가입 검정 */
+body.all_open .util{
+  color:#111;
+}
+body.all_open .util__link{ color:#111; }
+
+/* 검색 아이콘(테두리/막대) 검정 */
+body.all_open .searchIcon{
+  border-color: rgba(0,0,0,.85);
+}
+body.all_open .searchIcon::after{
+  background: rgba(0,0,0,.85);
+}
+
+/* 햄버거 줄 검정 */
+body.all_open .burger span{
+  background: rgba(0,0,0,.85);
+}
 /* 햄버거 */
 .burger {
   position: relative;
@@ -210,4 +349,19 @@ a {
 
 .burger span:nth-child(3) {
   top: 21px;
+}
+
+/* 공통 섹션 타이틀 */
+.section_title h2{
+  font-size: 55px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1f2c;
+}
+
+.section_title span{
+  display: block;
+  font-size: 16px;
+  color: #9aa0a6;
+  font-weight: 400;
 }
